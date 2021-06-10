@@ -48,14 +48,15 @@ svix2_sp500 = svix2_sp500[filtered_entries]
 sp500_tickers = svix2_sp500.index
 
 # save svix2 as csv
-filename = f"svix2_{datetime.now().day}_{datetime.now().month}_{datetime.now().year}.csv"
+filename = f"svix2_{datetime.now().day}_{datetime.now().month}_{datetime.now().year}"
 svix2_sp500.to_csv(filename)
 
 # Fetch market cap for each stock left
 sp500_mktcap = np.zeros(len(svix2_sp500))
 for i in range(len(svix2_sp500.index)):
-    if i % 10 == 0:
-        print(i)
+    # if i % 10 == 0:
+    #     print(i)
+    print(i)
     tkr = svix2_sp500.index[i]
     mktcap = yf.Ticker(tkr).info['marketCap']
     sp500_mktcap[i] = mktcap
@@ -64,5 +65,5 @@ for i in range(len(svix2_sp500.index)):
 sp500_mktcap = np.array(sp500_mktcap)
 
 # save mktcap as CSV
-filename = f"sp500_mktcap_{datetime.now().day}_{datetime.now().month}_{datetime.now().year}.csv"
+filename = f"sp500_mktcap_{datetime.now().day}_{datetime.now().month}_{datetime.now().year}"
 pd.Series(sp500_mktcap, index=svix2_sp500.index).to_csv(filename)
