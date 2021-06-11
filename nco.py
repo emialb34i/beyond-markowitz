@@ -14,7 +14,7 @@ def markowitz(cov, mu, bounds):
     return w
 
 
-def nco(cov, mu, bounds=(0.02, 1)):
+def nco(cov, mu, bounds=(-1, 1)):
     corr = cov_to_corr(cov)
     _, clstrs, _ = clusterKMeansTop(corr, int(corr.shape[0]/2))
     print(clstrs)

@@ -7,7 +7,7 @@ import yfinance as yf
 
 
 def get_data(tkrs):
-    data = yf.download(tkrs, period="5y", group_by='ticker')
+    data = yf.download(tkrs, period="1y", group_by='ticker')
     df = pd.DataFrame()
     for tkr in tkrs:
         df[tkr] = data[tkr]['Adj Close']
