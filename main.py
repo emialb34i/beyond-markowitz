@@ -22,7 +22,7 @@ svix_i = svix2_stocks.loc[tkrs]
 svix_bar = np.dot(mkt_cap.T, svix2_stocks)/mkt_cap.sum().values
 expected_return = (svix_t + 0.5*(svix_i-svix_bar))*2  # annualized
 
-# portfolio will be made of 20 random stocks with expected returns above 10%
+# portfolio will be made of 12 random stocks with expected returns above 10%
 tkrs = list(expected_return[expected_return.SVIX2 > .1].index)
 tkrs = random.sample(tkrs, 12)
 
